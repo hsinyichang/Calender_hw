@@ -2,33 +2,49 @@
   <title>萬年曆作業</title>
   <style>
    /*請在這裹撰寫你的CSS*/ 
+   body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: white;
+     text-align: center;
+   }
+   section{
+     width: 300px;
+     height: 560px;
+   }
    .table{
-            width:560px;
-            height:560px;
+            width:620px;
+            height:620px;
             /* border:1px solid green; */
             display:flex;
             flex-wrap:wrap;
-            align-content: baseline;
+            align-content: center;
+            justify-content: center;
             margin-left:1px;
             margin-top:1px;
+            background-color: #ffe9f9;
+            border-radius: 50%;
         }
 
         .table div{
             display:inline-block;
             width:80px;
-            height:80px;
-            border:1px solid #999;
+            height:60px;
             box-sizing: border-box;
-            margin-left:-1px;
-            margin-top:-1px;
+            
+            padding-top: 20px;
         }
         .table div.header{
-            background:black;
-            color:white;
-            height: 32px;;
+            height: 32px;
+            padding-top: 7px;
+            font-weight: bold;
+            
         }
         .weekend{
-            background:pink;
+            
+            color: red;
+            font-weight: bold;
         }
         .workday{
             background:white;
@@ -38,10 +54,10 @@
         }
   </style>
 <body>
-<h1>萬年曆</h1>
+
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
-$month=5;
+$month=10;
 
 
 $firstDay=date("Y-").$month."-1";/*這個月的第一天，ex:2022-2-1*/
@@ -66,15 +82,28 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 }
 
 ?>
+<aside>
+  <?php
+  echo date("Y");
+  echo '<br>';
+  echo date("m");
+  echo '<br>';
+  echo date("F");
+  ?>
+</aside>
+<section></section>
+
+
 <!--table-->
 <div class="table"> 
-<div class='header'>日</div>
-<div class='header'>一</div>
-<div class='header'>二</div>
-<div class='header'>三</div>
-<div class='header'>四</div>
-<div class='header'>五</div>
-<div class='header'>六</div>
+<div class='header'>Sun</div>
+<div class='header'>Mon</div>
+<div class='header'>Tue</div>
+<div class='header'>Wed</div>
+<div class='header'>Thu</div>
+<div class='header'>Fri</div>
+<div class='header'>Sat</div>
+
 <?php
 foreach($dateHouse as $k => $day){
     $hol=($k%7==0 || $k%7==6)?'weekend':"";/*三元運算子(前面運算式為TRUE時的值是weekend，FALSE則為"空白") */
@@ -91,7 +120,7 @@ foreach($dateHouse as $k => $day){
 ?>
 </div>
 <!--table end-->
-
+<section></section>
   
 </body>
 <html>
