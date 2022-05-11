@@ -1,6 +1,6 @@
 <html>
   <title>萬年曆作業</title>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   
   <style>
@@ -10,7 +10,7 @@
    }
 
    body{
-     
+     background-color:lightcoral;
    
     }
    .body{
@@ -52,11 +52,11 @@
         height: 310px;
         background-color:rgb(255, 233, 249);
         border-radius: 50%;
-        font-size: 30px; 
+        font-size: 35px; 
    }
    .aside div{/*左側耳朵內容 */
         position: relative;
-        top:23%;
+        top:14%;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    }
    nav{/*下面月曆的框(切版) */
@@ -150,9 +150,9 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
     echo '<br>';
     echo date("F");
     echo '<br>';
-    ?>
-    <a href="">上個月</a>
-    <a href="">下個月</a>
+    ?><br>
+    <a href=""><i class="fa-solid fa-backward"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><i class="fa-solid fa-forward"></i></a>
   </div>
 </div>
 </aside>
