@@ -1,33 +1,81 @@
 <html>
   <title>萬年曆作業</title>
+  
+  
+  
   <style>
    /*請在這裹撰寫你的CSS*/ 
+   *{
+       box-sizing: border-box; 
+   }
+
    body{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background-color: white;
+     
+   
+    }
+   .body{
+     
      text-align: center;
+     display: flex;
+     flex-wrap: wrap;
+     margin: 20px auto;
+     width: 900px;
+     height: 100%;
+
    }
-   section{
-     width: 300px;
-     height: 560px;
+   
+   section{/*右側耳朵(切版) */
+        width: 50%;
+        height: 310px;
+        position: relative;
+        left: 82px;
+     
    }
-   .table{
-            width:620px;
-            height:620px;
-            /* border:1px solid green; */
-            display:flex;
-            flex-wrap:wrap;
-            align-content: center;
-            justify-content: center;
-            margin-left:1px;
-            margin-top:1px;
-            background-color: #ffe9f9;
-            border-radius: 50%;
+   .section{/*右側耳朵框 */
+        width: 310px;
+        height: 310px;
+        background-color: #ffe9f9;
+        border-radius: 50%;
+        padding-top: 50px;
+        font-size: 30px;
+   }
+   aside{/*左側耳朵(切版) */
+        width: 50%;
+        height: 310px;
+        position: relative;
+        left: 41px;
+       
+   }
+   .aside{/*左側耳朵框 */
+        width: 310px;
+        height: 310px;
+        background-color: #ffe9f9;
+        border-radius: 50%;
+        font-size: 30px; 
+   }
+   .aside div{/*左側耳朵內容 */
+        position: relative;
+        top:25%;
+   }
+   nav{/*下面月曆的框(切版) */
+        width: 100%;
+        height: 630px;
+        margin-top: -132px;
+   }
+   .table{/*整個月曆框 */
+        width:630px;
+        height:630px;
+        /* border:1px solid green; */
+        display:flex;
+        flex-wrap:wrap;
+        align-content: center;
+        justify-content: center;
+        margin:0 auto;
+        background-color: #ffe9f9;
+        border-radius: 50%;
         }
 
-        .table div{
+        .table div{   /*裡面的日期格子 */
             display:inline-block;
             width:80px;
             height:60px;
@@ -35,7 +83,7 @@
             
             padding-top: 20px;
         }
-        .table div.header{
+        .table div.header{/*星期的標題 */
             height: 32px;
             padding-top: 7px;
             font-weight: bold;
@@ -52,9 +100,14 @@
         .today{
             background:lightseagreen;
         }
+        footer{/*當天日期時間 */
+            width: 100%;
+            height: 28px;
+        }
+
   </style>
 <body>
-
+<div class="body">
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
 $month=10;
@@ -83,18 +136,30 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 
 ?>
 <aside>
-  <?php
-  echo date("Y");
-  echo '<br>';
-  echo date("m");
-  echo '<br>';
-  echo date("F");
-  ?>
+<div class="aside">
+  <div>
+    <?php
+    echo date("Y");
+    echo '<br>';
+    echo date("m");
+    echo '<br>';
+    echo date("F");
+    echo '<br>';
+    ?>
+    <a href="">上個月</a>
+    <a href="">下個月</a>
+  </div>
+</div>
 </aside>
-<section></section>
+<section>
+    <div class="section">
+    
+</div>
+</section>
 
 
 <!--table-->
+<nav>
 <div class="table"> 
 <div class='header'>Sun</div>
 <div class='header'>Mon</div>
@@ -119,8 +184,10 @@ foreach($dateHouse as $k => $day){
 
 ?>
 </div>
+</nav>
 <!--table end-->
-<section></section>
-  
+<footer style="text-align:center;"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=Asia%2FTaipei" width="100%" height="90" frameborder="0" seamless></iframe>
+</footer>
+</div>
 </body>
 <html>
