@@ -34,8 +34,9 @@
    .section{/*右側耳朵框 */
         width: 310px;
         height: 310px;
-        background-color: #ffe9f9;
+        background-color:rgb(255, 233, 249);
         border-radius: 50%;
+        
         padding-top: 50px;
         font-size: 30px;
    }
@@ -49,13 +50,14 @@
    .aside{/*左側耳朵框 */
         width: 310px;
         height: 310px;
-        background-color: #ffe9f9;
+        background-color:rgb(255, 233, 249);
         border-radius: 50%;
         font-size: 30px; 
    }
    .aside div{/*左側耳朵內容 */
         position: relative;
-        top:25%;
+        top:23%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    }
    nav{/*下面月曆的框(切版) */
         width: 100%;
@@ -71,8 +73,9 @@
         align-content: center;
         justify-content: center;
         margin:0 auto;
-        background-color: #ffe9f9;
+        background-color:rgb(255, 233, 249);
         border-radius: 50%;
+        
         }
 
         .table div{   /*裡面的日期格子 */
