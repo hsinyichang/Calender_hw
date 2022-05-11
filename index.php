@@ -20,7 +20,7 @@
      flex-wrap: wrap;
      margin: 20px auto;
      width: 900px;
-     height: 100%;
+     height: 850px;
 
    }
    
@@ -103,6 +103,8 @@
         footer{/*當天日期時間 */
             width: 100%;
             height: 28px;
+            position: relative;
+            top:-112px;
         }
 
   </style>
