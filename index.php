@@ -21,6 +21,7 @@
      margin: 20px auto;
      width: 900px;
      height: 850px;
+     background-image: url(./mickey.png);
 
    }
    
@@ -34,7 +35,7 @@
    .section{/*右側耳朵框 */
         width: 310px;
         height: 310px;
-        background-color:rgb(255, 233, 249);
+        /* background-color:rgb(255, 233, 249); */
         border-radius: 50%;
         
         padding-top: 50px;
@@ -50,7 +51,7 @@
    .aside{/*左側耳朵框 */
         width: 310px;
         height: 310px;
-        background-color:rgb(255, 233, 249);
+        /* background-color:rgb(255, 233, 249); */
         border-radius: 50%;
         font-size: 35px; 
    }
@@ -73,7 +74,7 @@
         align-content: center;
         justify-content: center;
         margin:0 auto;
-        background-color:rgb(255, 233, 249);
+        /* background-color:rgb(255, 233, 249); */
         border-radius: 50%;
         
         }
