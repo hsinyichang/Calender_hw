@@ -10,7 +10,7 @@
    }
 
    body{
-     background-color:lightcoral;
+     background-color:lightcyan;
    
     }
    .body{
@@ -57,13 +57,13 @@
    }
    .aside div{/*左側耳朵內容 */
         position: relative;
-        top:14%;
+        top:17%;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    }
    nav{/*下面月曆的框(切版) */
         width: 100%;
         height: 630px;
-        margin-top: -132px;
+        margin-top: -109px;
    }
    .table{/*整個月曆框 */
         width:630px;
