@@ -21,7 +21,7 @@
      margin: 20px auto;
      width: 900px;
      height: 850px;
-     background-image: url(./mickey.png);
+     background-image: url(./img/mickey.png);
 
    }
    
@@ -37,9 +37,10 @@
         height: 310px;
         /* background-color:rgb(255, 233, 249); */
         border-radius: 50%;
-        
-        padding-top: 50px;
+        padding-top:50px;
         font-size: 30px;
+        color: #801362;
+        font-weight: bold;
    }
    aside{/*左側耳朵(切版) */
         width: 50%;
@@ -55,10 +56,17 @@
         border-radius: 50%;
         font-size: 35px; 
    }
+   .aside a{
+       color: #fa89db;
+       
+   }
    .aside div{/*左側耳朵內容 */
         position: relative;
-        top:17%;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        top:13%;
+        font-family:'Russo One';
+        color: #801362;
+        font-weight: bold;
+
    }
    nav{/*下面月曆的框(切版) */
         width: 100%;
@@ -76,6 +84,7 @@
         margin:0 auto;
         /* background-color:rgb(255, 233, 249); */
         border-radius: 50%;
+        font-family: 'Russo One';
         
         }
 
@@ -98,9 +107,7 @@
             color: red;
             font-weight: bold;
         }
-        .workday{
-            background:white;
-        }
+        
         .today{
             background:lightseagreen;
         }
@@ -115,20 +122,55 @@
 <body>
 <div class="body">
 <?php
+
+    if(isset($_GET['month'])){
+        $month=$_GET['month'];
+        $year=$_GET['year'];
+        
+    }else{
+        $month=date('n');
+        $year=date("Y");
+        
+    }
+
+    switch($month){
+        case 1:
+            $prevMonth=12;
+            $prevYear=$year-1;
+            $nextMonth=$month+1;
+            $nextYear=$year;
+            
+        break;
+        case 12:
+            $prevMonth=$month-1;
+            $prevYear=$year;
+            $nextMonth=1;
+            $nextYear=$year+1;
+            
+        break;
+        default:
+            $prevMonth=$month-1;
+            $prevYear=$year;
+            $nextMonth=$month+1;
+            $nextYear=$year;
+            
+    }
+
+    ?>
+<?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
-$month=10;
 
-
-$firstDay=date("Y-").$month."-1";/*這個月的第一天，ex:2022-2-1*/
+$firstDay=$year."-".$month."-1";/*這個月的第一天，ex:2022-2-1*/
 $firstWeekday=date("w",strtotime($firstDay));/*第一天是星期幾，0表示星期天-6表示星期六 */
 $monthDays=date("t",strtotime($firstDay));/*指定的月份有幾天 */
-$lastDay=date("Y-").$month."-".$monthDays;/*這個月的最後一天，ex:2022-2-28(月份的天數) */
+$lastDay=$year."-".$month."-".$monthDays;/*這個月的最後一天，ex:2022-2-28(月份的天數) */
 $today=date("Y-m-d");/*今天日期 */
 $lastWeekday=date("w",strtotime($lastDay));/*最後一天是星期幾 */
+$emonth=date("F");
 $dateHouse=[];
 
 for($i=0;$i<$firstWeekday;$i++){/*如果第一天是星期X則$firstWeekday=X，所以第一周就會先跑出X個空格，然後星期X才會開始在跑日期 */
-    $dateHouse[]="";
+    $dateHouse[]="";/*先跑空白 */
 }
 
 for($i=0;$i<$monthDays;$i++){/*從星期二的位置開始跑迴圈，列出這個月的日期 */
@@ -140,40 +182,51 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
     $dateHouse[]="";
 }
 
+            
+
 ?>
+
 <aside>
 <div class="aside">
   <div>
     <?php
-    echo date("Y");
+    echo $year."年";
+    echo '<br>'.'<br>';
+    echo $month."月";
     echo '<br>';
-    echo date("m");
-    echo '<br>';
-    echo date("F");
-    echo '<br>';
-    ?><br>
-    <a href=""><i class="fa-solid fa-backward"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href=""><i class="fa-solid fa-forward"></i></a>
+    
+    ?>
+    <br>
+    <a href='index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>'><i class="fa-solid fa-backward"></i></a>&nbsp;&nbsp;
+    <a href="index.php" style="text-decoration:none ;"><span style="font-family:'Russo One';">NOW</span></a>&nbsp;&nbsp;
+    <a href='index.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>'><i class="fa-solid fa-forward"></i></a>
   </div>
 </div>
 </aside>
 <section>
     <div class="section">
-    
-</div>
+        <form action="./index.php" method="$_GET">
+            請輸入 <br>
+            年:<input type="number" name="year"><br>
+            月:<input type="number" name="month"><br><br>
+            <input type="submit" value="確認">
+            <input type="reset" value="重置">
+
+        </form>
+    </div>
 </section>
 
 
 <!--table-->
 <nav>
 <div class="table"> 
-<div class='header'>Sun</div>
+<div class='header' style="color:red ;">Sun</div>
 <div class='header'>Mon</div>
 <div class='header'>Tue</div>
 <div class='header'>Wed</div>
 <div class='header'>Thu</div>
 <div class='header'>Fri</div>
-<div class='header'>Sat</div>
+<div class='header' style="color:red ;">Sat</div>
 
 <?php
 foreach($dateHouse as $k => $day){
