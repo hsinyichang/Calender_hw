@@ -10,8 +10,11 @@
    }
 
    body{
-     background-color:lightcyan;
-   
+    background: #EECDA3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
     }
    .body{
      
@@ -95,6 +98,9 @@
             box-sizing: border-box;
             
             padding-top: 20px;
+        }
+        .table div:hover{
+            background-image: url(./img/hover.png);
         }
         .table div.header{/*星期的標題 */
             height: 32px;
