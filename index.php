@@ -10,11 +10,20 @@
    }
 
    body{
+       margin: 0;
+       padding: 0;
     background: #EECDA3;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
+    }
+    .body1{
+        width: 1920px;
+       height: 937px;
+       margin: 0;
+       padding: 0;
+        background-image: url(./img/背景2.png);
     }
    .body{
      
@@ -44,6 +53,7 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
         font-size: 30px;
         color: #801362;
         font-weight: bold;
+        font-family: 'Russo One';
    }
    aside{/*左側耳朵(切版) */
         width: 50%;
@@ -115,17 +125,18 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
         }
         
         .today{
-            background:lightseagreen;
+            color: blue;
         }
         footer{/*當天日期時間 */
             width: 100%;
-            height: 28px;
+            height: 90px;
             position: relative;
             top:-112px;
         }
 
   </style>
 <body>
+    <div class="body1">
 <div class="body">
 <?php
 
@@ -172,7 +183,6 @@ $monthDays=date("t",strtotime($firstDay));/*指定的月份有幾天 */
 $lastDay=$year."-".$month."-".$monthDays;/*這個月的最後一天，ex:2022-2-28(月份的天數) */
 $today=date("Y-m-d");/*今天日期 */
 $lastWeekday=date("w",strtotime($lastDay));/*最後一天是星期幾 */
-$emonth=date("F");
 $dateHouse=[];
 
 for($i=0;$i<$firstWeekday;$i++){/*如果第一天是星期X則$firstWeekday=X，所以第一周就會先跑出X個空格，然後星期X才會開始在跑日期 */
@@ -212,11 +222,11 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 <section>
     <div class="section">
         <form action="./index.php" method="$_GET">
-            請輸入 <br>
+            Search <br>
             年:<input type="number" name="year"><br>
             月:<input type="number" name="month"><br><br>
-            <input type="submit" value="確認">
-            <input type="reset" value="重置">
+            <input type="submit" value="查詢">
+            <input type="reset" value="清除">
 
         </form>
     </div>
@@ -235,8 +245,9 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 <div class='header' style="color:red ;">Sat</div>
 
 <?php
-foreach($dateHouse as $k => $day){
-    $hol=($k%7==0 || $k%7==6)?'weekend':"";/*三元運算子(前面運算式為TRUE時的值是weekend，FALSE則為"空白") */
+foreach($dateHouse as $k => $day){/*依據月曆的陣列畫格子，並帶入月曆值 */
+    $hol=($k%7==0 || $k%7==6)?'weekend':"";/*三元運算子(前面運算式為TRUE時的值是weekend，FALSE則為"平日") */
+    /*假日套用.weekend  css 樣式 */
     
     if(!empty($day)){  /*天數不為空白 */
         $dayFormat=date("j",strtotime($day));/*不補零的天數，ex:本月五日則為5 */
@@ -253,6 +264,7 @@ foreach($dateHouse as $k => $day){
 <!--table end-->
 <footer style="text-align:center;"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=Asia%2FTaipei" width="100%" height="90" frameborder="0" seamless></iframe>
 </footer>
+</div>
 </div>
 </body>
 <html>
