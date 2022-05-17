@@ -23,7 +23,7 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
        height: 937px;
        margin: 0;
        padding: 0;
-        background-image: url(./img/背景2.png);
+        background-image: url(./img/背景10.png);
     }
    .body{
      
