@@ -10,20 +10,20 @@
    }
 
    body{
-       margin: 0;
-       padding: 0;
-    background: #EECDA3;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+           
+        margin: 0 auto;
+        padding: 0;
+        background: #EECDA3;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
     }
     .body1{/*左側迪士尼圖片 */
-        width: 1920px;
-        height: 937px;
-        margin: 0;
+        
+        margin: 0 ;
         padding: 0;
-        background-image: url(./img/背景10.png);
+        position: relative;
     }
    .body{/*月曆的米奇底圖 */
      
@@ -34,7 +34,10 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
      width: 900px;
      height: 850px;
      background-image: url(./img/mickey.png);
-
+    position: absolute;
+    top: 10px;
+    left: 515px;
+    
    }
    
    section{/*右側耳朵(切版) */
@@ -110,11 +113,11 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
             padding-top: 20px;
         }
         .table div:hover{
-            background-image: url(./img/hover.png);
-	        -webkit-animation: jello-horizontal 0.9s both;
-	        animation: jello-horizontal 0.9s both;
-
-
+          background-image: url(./img/hover.png);
+            
+	        -webkit-animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          cursor: pointer;
         }
         .table div.header{/*星期的標題 */
             height: 32px;
@@ -137,108 +140,74 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
             position: relative;
             top:-112px;
         }
-        @-webkit-keyframes jello-horizontal {
+        @-webkit-keyframes flip-in-hor-top {
   0% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-            transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-            transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-            transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-            transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-            transform: scale3d(1.05, 0.95, 1);
+    -webkit-transform: rotateX(-80deg);
+            transform: rotateX(-80deg);
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    opacity: 1;
   }
 }
-@keyframes jello-horizontal {
+@keyframes flip-in-hor-top {
   0% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-            transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-            transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-            transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-            transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-            transform: scale3d(1.05, 0.95, 1);
+    -webkit-transform: rotateX(-80deg);
+            transform: rotateX(-80deg);
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    opacity: 1;
   }
 }
 
 
   </style>
 <body>
-    <div class="body1">
-<div class="body">
 <?php
 
-    if(isset($_GET['month'])){
-        $month=$_GET['month'];
-        $year=$_GET['year'];
-        
-    }else{
-        $month=date('n');
-        $year=date("Y");
-        
-    }
+if(isset($_GET['month'])){
+    $month=$_GET['month'];
+    $year=$_GET['year'];
+    
+}else{
+    $month=date('n');
+    $year=date("Y");
+    
+}
 
-    switch($month){
-        case 1:
-            $prevMonth=12;
-            $prevYear=$year-1;
-            $nextMonth=$month+1;
-            $nextYear=$year;
-            
-        break;
-        case 12:
-            $prevMonth=$month-1;
-            $prevYear=$year;
-            $nextMonth=1;
-            $nextYear=$year+1;
-            
-        break;
-        default:
-            $prevMonth=$month-1;
-            $prevYear=$year;
-            $nextMonth=$month+1;
-            $nextYear=$year;
-            
-    }
+switch($month){
+    case 1:
+        $prevMonth=12;
+        $prevYear=$year-1;
+        $nextMonth=$month+1;
+        $nextYear=$year;
+        
+    break;
+    case 12:
+        $prevMonth=$month-1;
+        $prevYear=$year;
+        $nextMonth=1;
+        $nextYear=$year+1;
+        
+    break;
+    default:
+        $prevMonth=$month-1;
+        $prevYear=$year;
+        $nextMonth=$month+1;
+        $nextYear=$year;
+        
+}
 
-    ?>
+?>
+    <div class="body1">
+      <img src="./img/month<?=$month?>.png">
+<div class="body">
+
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
 
@@ -288,8 +257,8 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
     <div class="section">
         <form action="./index.php" method="$_GET">
             Search <br>
-            年:<input type="number" name="year"><br>
-            月:<input type="number" name="month"><br><br>
+            年:&nbsp;<input type="number" name="year"><br>
+            月:&nbsp;<input type="number" name="month"><br><br>
             <input type="submit" value="查詢">
             <input type="reset" value="清除">
 
