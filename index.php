@@ -11,14 +11,12 @@
 
    body{
            
-        margin: 0 auto;
+        margin: 0;
         padding: 0;
         background: #EECDA3;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         /*漸層背景 */
-        
-
     }
     .body1{/*左側迪士尼圖片 */
         
@@ -87,7 +85,7 @@
    nav{/*下面月曆的框(切版) */
         width: 100%;
         height: 630px;
-        margin-top: -109px;
+        margin-top: -117px;
    }
    .table{/*整個月曆框 */
         width:630px;
@@ -112,7 +110,7 @@
             
             padding-top: 20px;
         }
-        .table div:hover{
+        .table div>div:hover{
             background-image: url(./img/hover.png);
             
 	        -webkit-animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -131,15 +129,14 @@
             font-weight: bold;
         }
         
-        .today{
-            background-color:#b021fa;
-            border-radius: 30%;
-            color: #EECDA3;
+        .today >div{
+            text-decoration: underline;
+            color:chocolate;
+            font-size: 25px;
         }
-        .today::after{
-            content: "Today";
-            display: block;/*社區塊能斷行 */
-        }
+        
+            
+        
         footer{/*當天日期時間 */
             width: 100%;
             height: 90px;
@@ -170,8 +167,61 @@
         opacity: 1;
         }
         }
-
-
+        .f0101::after{
+        content:"元旦";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f0228::after{
+        content:"和平紀念日";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f0308::after{
+        content:"婦女節";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f0312::after{
+        content:"植樹節";
+        color: #801362;
+        font-family: '華康粗黑體';
+        }
+        .f0404::after{
+        content:"兒童節";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f0405::after{
+        content:"清明節";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f0501::after{
+        content:"勞動節";
+        color: #801362;
+        font-family: '華康粗黑體';
+        }
+        .f0615::after{
+        content:"My Bd";
+        color: #801362;
+        font-family: 'Russo One';
+        }
+        .f0928::after{
+        content:"孔子誕辰";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f1010::after{
+        content:"國慶日";
+        color: #801362;
+        font-family: '華康中特圓體';
+        }
+        .f1225::after{
+        content:"聖誕節";
+        color: #801362;
+        font-family: '華康粗黑體';
+        }
   </style>
 <body>
 <?php
@@ -286,22 +336,27 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 
 <?php
 foreach($dateHouse as $k => $day){/*依據月曆的陣列畫格子，並帶入月曆值 */
-    $hol=($k%7==0 || $k%7==6)?'weekend':"";/*三元運算子(前面運算式為TRUE時的值是weekend，FALSE則為"平日") */
-    /*假日套用.weekend  css 樣式 */
     
-    if ($day == $today) {
-        $hol = 'today';}
 
+        if ($day == $today) {
+            $hol = 'today';
+        } else if ($k % 7 == 0 || $k % 7 == 6) {
+            $hol = 'weekend';
+        } else if ($fday = date("md" , strtotime($day))){
+          $hol = 'f';
+        }else{
+            $hol = '';
+        }
 
-    if(!empty($day)){  /*天數不為空白 */
-        $dayFormat=date("j",strtotime($day));/*不補零的天數，ex:本月五日則為5 */
-        echo "<div class='{$hol}'>{$dayFormat}</div>";
-    }else{
-        echo "<div class='{$hol}'></div>";
-
+        // $hol = ($k % 7 == 0 || $k % 7 == 6) ? 'weekend' : ""; //判定是否為假日
+        if (!empty($day)) {
+            $fday = date("md" , strtotime($day)); //每一天都產生一個$sday變數
+            $dayFormat = date("j", strtotime($day));
+            echo "<div class='{$hol}'><div class='f{$fday}'>{$dayFormat}<br></div></div>";
+        } else {
+            echo "<div class='{$hol}'></div>";
+        }
     }
-}
-
 ?>
 </div>
 </nav>
