@@ -16,28 +16,28 @@
         background: #EECDA3;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+        /*漸層背景 */
+        
 
     }
     .body1{/*左側迪士尼圖片 */
         
-        margin: 0 ;
+        margin: 0;
         padding: 0;
-        position: relative;
     }
    .body{/*月曆的米奇底圖 */
      
-     text-align: center;
-     display: flex;
-     flex-wrap: wrap;
-     margin: 20px auto;
-     width: 900px;
-     height: 850px;
-     background-image: url(./img/mickey.png);
-    position: absolute;
-    top: 10px;
-    left: 515px;
-    
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px auto;
+        width: 900px;
+        height: 850px;
+        background-image: url(./img/mickey.png);
+        position: absolute;/*可任意變動位置 */
+        top: 10px;
+        left:27%;
+        /*為了配合隨機圖片區塊，所以使用position設定位置 */
    }
    
    section{/*右側耳朵(切版) */
@@ -113,11 +113,11 @@
             padding-top: 20px;
         }
         .table div:hover{
-          background-image: url(./img/hover.png);
+            background-image: url(./img/hover.png);
             
 	        -webkit-animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-          cursor: pointer;
+            cursor: pointer;
         }
         .table div.header{/*星期的標題 */
             height: 32px;
@@ -132,7 +132,13 @@
         }
         
         .today{
-            color: blue;
+            background-color:#b021fa;
+            border-radius: 30%;
+            color: #EECDA3;
+        }
+        .today::after{
+            content: "Today";
+            display: block;/*社區塊能斷行 */
         }
         footer{/*當天日期時間 */
             width: 100%;
@@ -141,29 +147,29 @@
             top:-112px;
         }
         @-webkit-keyframes flip-in-hor-top {
-  0% {
-    -webkit-transform: rotateX(-80deg);
-            transform: rotateX(-80deg);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0);
-            transform: rotateX(0);
-    opacity: 1;
-  }
-}
-@keyframes flip-in-hor-top {
-  0% {
-    -webkit-transform: rotateX(-80deg);
-            transform: rotateX(-80deg);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0);
-            transform: rotateX(0);
-    opacity: 1;
-  }
-}
+        0% {
+        -webkit-transform: rotateX(-80deg);
+        transform: rotateX(-80deg);
+        opacity: 0;
+        }
+        100% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
+        }
+        }
+        @keyframes flip-in-hor-top {
+        0% {
+        -webkit-transform: rotateX(-80deg);
+        transform: rotateX(-80deg);
+        opacity: 0;
+        }
+        100% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
+        }
+        }
 
 
   </style>
@@ -205,8 +211,8 @@ switch($month){
 
 ?>
     <div class="body1">
-      <img src="./img/month<?=$month?>.png">
-<div class="body">
+      <img src="./img/month<?=$month?>.png"> <!--左側隨著月份改變迪士尼圖片，裡面的php呼叫是配合著月份，所以圖片檔名month的後面也要設定1-12的數字-->
+    <div class="body">
 
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
@@ -257,8 +263,8 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
     <div class="section">
         <form action="./index.php" method="$_GET">
             Search <br>
-            年:&nbsp;<input type="number" name="year"><br>
-            月:&nbsp;<input type="number" name="month"><br><br>
+            年:&nbsp;<input type="number" name="year" placeholder="輸入西元年"><br>
+            月:&nbsp;<input type="number" name="month" placeholder="輸入月份"><br><br>
             <input type="submit" value="查詢">
             <input type="reset" value="清除">
 
@@ -283,6 +289,10 @@ foreach($dateHouse as $k => $day){/*依據月曆的陣列畫格子，並帶入�
     $hol=($k%7==0 || $k%7==6)?'weekend':"";/*三元運算子(前面運算式為TRUE時的值是weekend，FALSE則為"平日") */
     /*假日套用.weekend  css 樣式 */
     
+    if ($day == $today) {
+        $hol = 'today';}
+
+
     if(!empty($day)){  /*天數不為空白 */
         $dayFormat=date("j",strtotime($day));/*不補零的天數，ex:本月五日則為5 */
         echo "<div class='{$hol}'>{$dayFormat}</div>";
