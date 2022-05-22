@@ -87,6 +87,10 @@
         height: 630px;
         margin-top: -117px;
    }
+   nav img{
+       position: relative;
+       top:30px;
+   }
    .table{/*整個月曆框 */
         width:630px;
         height:630px;
@@ -99,7 +103,8 @@
         /* background-color:rgb(255, 233, 249); */
         border-radius: 50%;
         font-family: 'Russo One';
-        
+        position: relative;
+        top: -42px;
         }
 
         .table div{   /*裡面的日期格子 */
@@ -297,11 +302,12 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
   <div>
     <?php
     echo $year."年";
-    echo '<br>'.'<br>';
+    echo '<br>';
+    echo '<br>';
     echo $month."月";
     echo '<br>';
-    
     ?>
+    
     <br>
     <a href='index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>'><i class="fa-solid fa-backward"></i></a>&nbsp;&nbsp;
     <a href="index.php" style="text-decoration:none ;"><span style="font-family:'Russo One';">NOW</span></a>&nbsp;&nbsp;
@@ -325,6 +331,7 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 
 <!--table-->
 <nav>
+<img src="./img/<?=$month?>.png" alt="<?=$month?>">
 <div class="table"> 
 <div class='header' style="color:red ;">Sun</div>
 <div class='header'>Mon</div>
