@@ -211,7 +211,7 @@ switch($month){
 
 ?>
     <div class="body1">
-      <img src="./img/month<?=$month?>.png"> <!--左側隨著月份改變迪士尼圖片，裡面的php呼叫是配合著月份，所以圖片檔名month的後面也要設定1-12的數字-->
+      <img src="./img/m<?=$month?>.png"> <!--左側隨著月份改變迪士尼圖片，裡面的php呼叫是配合著月份，所以圖片檔名month的後面也要設定1-12的數字-->
     <div class="body">
 
 <?php
