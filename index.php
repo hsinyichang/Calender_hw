@@ -31,7 +31,7 @@
         background-image: url(./img/mickey.png);
         position: absolute;/*可任意變動位置 */
         top: 10px;
-        left:27%;
+        left:26.5%;
         /*為了配合隨機圖片區塊，所以使用position設定位置 */
    }
    
