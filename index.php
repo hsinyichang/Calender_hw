@@ -117,7 +117,7 @@
             
 	        -webkit-animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: flip-in-hor-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            cursor: pointer;
+            cursor: grab;
         }
         .table div.header{/*星期的標題 */
             height: 32px;
@@ -318,8 +318,8 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
             Search <br>
             年:&nbsp;<input type="number" name="year" placeholder="輸入西元年"><br>
             月:&nbsp;<input type="number" name="month" placeholder="輸入月份"><br><br>
-            <input type="submit" value="查詢">
-            <input type="reset" value="清除">
+            <input type="submit" value="查詢" style="color:aliceblue;border-radius:10px;border:0;background-color:deeppink;width:50px;height:25px;cursor:pointer;">
+            <input type="reset" value="清除" style="color:aliceblue;border-radius:10px;border:0;background-color:deeppink;width:50px;height:25px;cursor:pointer;">
 
         </form>
     </div>
