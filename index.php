@@ -13,10 +13,7 @@
            
         margin: 0;
         padding: 0;
-        background: #EECDA3;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        /*漸層背景 */
+        background-image: url(./img/mickey1.png);
     }
     .body1{/*左側迪士尼圖片 */
         
