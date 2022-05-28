@@ -328,7 +328,7 @@ for($i=0;$i<(6-$lastWeekday);$i++){/*續上，所有日期列出後，之後的�
 
 <!--table-->
 <nav>
-<img src="./img/<?=$month?>.png" alt="<?=$month?>">
+<img src="./img/<?=$month?>.png" alt="<?=$month?>"><!--英文月份圖片-->
 <div class="table"> 
 <div class='header' style="color:red ;">Sun</div>
 <div class='header'>Mon</div>
