@@ -239,7 +239,7 @@ if(isset($_GET['month'])){
     
 }
 
-switch($month){
+switch($month){   //若月份到1月時 往前年分會-1，以此類推
     case 1:
         $prevMonth=12;
         $prevYear=$year-1;
@@ -348,14 +348,14 @@ foreach($dateHouse as $k => $day){/*依據月曆的陣列畫格子，並帶入�
         } else if ($k % 7 == 0 || $k % 7 == 6) {
             $hol = 'weekend';
         } else if ($fday = date("md" , strtotime($day))){
-          $hol = 'f';
+          $hol = 'f';  //節日
         }else{
             $hol = '';
         }
 
         // $hol = ($k % 7 == 0 || $k % 7 == 6) ? 'weekend' : ""; //判定是否為假日
         if (!empty($day)) {
-            $fday = date("md" , strtotime($day)); //每一天都產生一個$sday變數
+            $fday = date("md" , strtotime($day)); //每一天都產生一個$fday變數
             $dayFormat = date("j", strtotime($day));
             echo "<div class='{$hol}'><div class='f{$fday}'>{$dayFormat}<br></div></div>";
         } else {
@@ -368,6 +368,7 @@ foreach($dateHouse as $k => $day){/*依據月曆的陣列畫格子，並帶入�
 <!--table end-->
 <footer style="text-align:center;"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=Asia%2FTaipei" width="100%" height="90" frameborder="0" seamless></iframe>
 </footer>
+<!-- https://www.techmarks.com/free-clock-widget/    時鐘可參考這個網址 -->
 </div>
 </div>
 </body>
